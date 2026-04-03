@@ -6,16 +6,6 @@ const nextConfig = {
   distDir: process.env.DIST_DIR || '.next',
 
   typescript: {
-<<<<<<< HEAD
-    ignoreBuildErrors: true},
-
-  eslint: {
-    ignoreDuringBuilds: true},
-
-  images: {
-    remotePatterns: imageHosts,
-    minimumCacheTTL: 60},
-=======
     ignoreBuildErrors: true,
   },
 
@@ -27,7 +17,6 @@ const nextConfig = {
     remotePatterns: imageHosts,
     minimumCacheTTL: 60,
   },
->>>>>>> ecb93fef058ae5175128b2ac0bd7af0f81c260a0
 
   async headers() {
     return [
@@ -36,13 +25,12 @@ const nextConfig = {
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-XSS-Protection', value: '1; mode=block' },
-<<<<<<< HEAD
-          
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
           {
             key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains; preload'},
+            value: 'max-age=31536000; includeSubDomains; preload',
+          },
           {
             key: 'Content-Security-Policy',
             value: [
@@ -56,18 +44,13 @@ const nextConfig = {
               "frame-ancestors 'none'",
               "object-src 'none'",
               "base-uri 'self'",
-              "form-action 'self'"].join('; ')}]}];
-=======
-          { key: 'Referrer-Policy', value: 'no-referrer' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; connect-src 'self' https: http:; frame-ancestors 'self' https://zafriqon8300.builtwithrocket.new;",
+              "form-action 'self'",
+            ].join('; '),
           },
         ],
       },
     ];
->>>>>>> ecb93fef058ae5175128b2ac0bd7af0f81c260a0
-  }
+  },
 };
+
 export default nextConfig;
