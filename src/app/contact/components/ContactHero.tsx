@@ -18,8 +18,8 @@ export default function ContactHero() {
       },
       { threshold: 0.1 }
     );
-    if (sectionRef?.current) observer?.observe(sectionRef?.current);
-    return () => observer?.disconnect();
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -48,11 +48,7 @@ export default function ContactHero() {
             Engagement requests are reviewed on a selective basis. All initial communications are treated with strict confidentiality. Sufficient context is required to assess alignment prior to any response.
           </p>
           <p className="text-sm font-light text-steel leading-[1.85]">
-<<<<<<< HEAD
-            ZAFRIQON evaluates structured, well-defined opportunities aligned with its strategic focus. For deal-specific enquiries, indicate the sector, approximate deal size, and institutional capacity.
-=======
             ZAFRIQON prioritizes structured, well-defined opportunities aligned with its strategic focus. For deal-specific enquiries, indicate the sector, approximate deal size, and institutional capacity.
->>>>>>> ecb93fef058ae5175128b2ac0bd7af0f81c260a0
           </p>
         </div>
       </div>

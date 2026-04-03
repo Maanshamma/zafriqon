@@ -9,14 +9,15 @@ import AboutCTA from './components/AboutCTA';
 
 export const metadata: Metadata = {
   title: 'ZAFRIQON — Deal Structuring Platform',
-<<<<<<< HEAD
-  description: 'ZAFRIQON is a selective investment platform focused on structuring high-value opportunities across emerging markets.',
+  description:
+    'ZAFRIQON structures complex cross-border transactions across energy, infrastructure, and strategic markets.',
   alternates: {
     canonical: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/about`,
   },
   openGraph: {
-    title: 'ZAFRIQON — Deal Structuring',
-    description: 'Selective investment platform structuring high-value opportunities across emerging markets.',
+    title: 'ZAFRIQON — Deal Structuring Platform',
+    description:
+      'ZAFRIQON structures complex cross-border transactions across energy, infrastructure, and strategic markets.',
     url: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/about`,
     type: 'website',
     images: [
@@ -30,17 +31,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ZAFRIQON — Deal Structuring',
-    description: 'Selective investment platform structuring high-value opportunities across emerging markets.',
-    images: ['/assets/images/app_logo.png'],
-=======
-  description:
-    'ZAFRIQON structures complex cross-border transactions across energy, infrastructure, and strategic markets.',
-  openGraph: {
     title: 'ZAFRIQON — Deal Structuring Platform',
     description:
       'ZAFRIQON structures complex cross-border transactions across energy, infrastructure, and strategic markets.',
->>>>>>> ecb93fef058ae5175128b2ac0bd7af0f81c260a0
+    images: ['/assets/images/app_logo.png'],
   },
 };
 
