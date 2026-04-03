@@ -1,48 +1,11 @@
 {
   "name": "zafriqon",
-<<<<<<< HEAD
   "version": "0.1.0",
   "private": true,
-  "rocketCritical": {
-    "dependencies": [
-      "next",
-      "react",
-      "react-dom",
-      "@dhiwise/component-tagger",
-      "@tailwindcss/typography",
-      "recharts"
-    ],
-    "devDependencies": [
-      "typescript",
-      "@types/node",
-      "@types/react",
-      "@types/react-dom",
-      "@typescript-eslint/eslint-plugin",
-      "@typescript-eslint/parser",
-      "eslint-config-next",
-      "tailwindcss",
-      "autoprefixer",
-      "postcss",
-      "eslint",
-      "prettier",
-      "@netlify/plugin-nextjs"
-    ],
-    "scripts": [
-      "dev",
-      "build",
-      "start",
-      "lint",
-      "lint:fix",
-      "format",
-      "serve",
-      "type-check"
-    ],
-    "warning": "🚨 CRITICAL: DO NOT REMOVE OR MODIFY ABOVE DEPENDENCIES - Required for Next.js 15 TypeScript app functionality"
-  },
   "scripts": {
     "dev": "next dev -p 4028",
     "build": "next build",
-    "start": "next dev -p 4028",
+    "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,md,json}\"",
@@ -77,18 +40,5 @@
     "tailwindcss": "3.4.6",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"
-=======
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "14.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
->>>>>>> ecb93fef058ae5175128b2ac0bd7af0f81c260a0
   }
 }
