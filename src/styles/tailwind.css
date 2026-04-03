@@ -1,0 +1,413 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap');
+
+:root {
+  --sapphire: #0A1628;
+  --sapphire-mid: #112240;
+  --sapphire-light: #1E3A5F;
+  --gold: #C8A96E;
+  --gold-light: #D4BC8A;
+  --parchment: #F8F7F4;
+  --parchment-dark: #F0EDE8;
+  --card: #F2F0EC;
+  --dark-card: #111D2E;
+  --steel: #8A9AB5;
+  --steel-light: #B8C4D4;
+  --charcoal: #2C3E55;
+  --border-light: rgba(10, 22, 40, 0.08);
+  --border-gold: rgba(200, 169, 110, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--parchment);
+  color: var(--sapphire);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: 'Fraunces', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* Gold line accent */
+.gold-line::before {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 40px;
+  background: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+/* Accordion */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accordion-content.open {
+  max-height: 300px;
+}
+
+/* Sector card hover */
+.sector-card {
+  transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.3s ease;
+}
+
+.sector-card:hover {
+  background-color: var(--sapphire);
+  color: white;
+  border-color: var(--sapphire);
+}
+
+.sector-card:hover .sector-label {
+  color: var(--gold);
+}
+
+.sector-card:hover .sector-text {
+  color: var(--steel-light);
+}
+
+/* Background grid lines */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(10, 22, 40, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 22, 40, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Cinematic image */
+.cinematic-img {
+  filter: saturate(0.7) contrast(1.1) brightness(0.65);
+  transition: filter 8s ease;
+}
+
+/* Form inputs */
+.form-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  padding: 0.75rem 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  color: var(--sapphire);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  border-bottom-color: var(--sapphire);
+  border-bottom-width: 1.5px;
+}
+
+.form-input::placeholder {
+  color: var(--steel);
+  font-weight: 300;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  color: var(--steel);
+  margin-bottom: 0.25rem;
+}
+
+/* Select */
+select.form-input {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--parchment); }
+::-webkit-scrollbar-thumb { background: var(--steel-light); border-radius: 2px; }
+
+/* Mobile nav overlay */
+#mobile-nav {
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#mobile-nav.open {
+  transform: translateX(0);
+}
+
+/* Ticker line */
+@keyframes tickerScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+<<<<<<< HEAD
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+=======
+>>>>>>> ecb93fef058ae5175128b2ac0bd7af0f81c260a0
+/* Hover underline */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── Typography Precision ─────────────────────────────────────────── */
+
+/* Display headings — Fraunces */
+.font-display {
+  font-family: 'Fraunces', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Heading letter-spacing refinement */
+h1, h2, h3 {
+  letter-spacing: -0.01em;
+}
+
+h1.font-display,
+h2.font-display {
+  letter-spacing: -0.02em;
+}
+
+/* Consistent font-weight for sans headings */
+h2.font-sans,
+h3.font-sans {
+  font-weight: 600;
+}
+
+/* Body text contrast improvement */
+p {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Global Rhythm — Unified Section Spacing ───────────────────────── */
+
+.section-standard {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+@media (min-width: 768px) {
+  .section-standard {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
+
+/* ─── Button Consistency ────────────────────────────────────────────── */
+
+/* Ensure all primary action buttons share identical sizing */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 1rem 1.75rem;
+  transition: all 0.3s ease;
+}
+
+/* ─── Button Micro-States ───────────────────────────────────────────── */
+
+/* Dark / sapphire-fill buttons (bg-sapphire) */
+a[class*="bg-sapphire"]:not([aria-disabled="true"]):not([disabled]):hover,
+button[class*="bg-sapphire"]:not([aria-disabled="true"]):not([disabled]):hover {
+  background-color: #1E3A5F;
+}
+
+a[class*="bg-sapphire"]:not([aria-disabled="true"]):not([disabled]):active,
+button[class*="bg-sapphire"]:not([aria-disabled="true"]):not([disabled]):active {
+  background-color: #112240;
+  opacity: 0.92;
+}
+
+/* Gold-fill buttons (bg-gold) */
+a[class*="bg-gold"]:not([aria-disabled="true"]):not([disabled]):hover,
+button[class*="bg-gold"]:not([aria-disabled="true"]):not([disabled]):hover {
+  background-color: #D4BC8A;
+}
+
+a[class*="bg-gold"]:not([aria-disabled="true"]):not([disabled]):active,
+button[class*="bg-gold"]:not([aria-disabled="true"]):not([disabled]):active {
+  background-color: #C8A96E;
+  opacity: 0.88;
+}
+
+/* Outlined buttons — border-gold or border-white or border-sapphire */
+a[class*="border-gold"]:not([aria-disabled="true"]):not([disabled]):active,
+button[class*="border-gold"]:not([aria-disabled="true"]):not([disabled]):active {
+  opacity: 0.85;
+}
+
+a[class*="border-sapphire"]:not([aria-disabled="true"]):not([disabled]):active,
+button[class*="border-sapphire"]:not([aria-disabled="true"]):not([disabled]):active {
+  opacity: 0.80;
+}
+
+a[class*="border-white"]:not([aria-disabled="true"]):not([disabled]):active,
+button[class*="border-white"]:not([aria-disabled="true"]):not([disabled]):active {
+  opacity: 0.80;
+}
+
+/* Role-selection buttons in ContactForm */
+button[aria-pressed]:not([disabled]):active {
+  opacity: 0.88;
+}
+
+/* ─── Link Micro-States ─────────────────────────────────────────────── */
+
+/* Footer nav links — already have hover:text-white; add subtle opacity on active */
+.footer-nav-link:active {
+  opacity: 0.70;
+}
+
+/* Inline text links (not nav, not buttons) */
+a:not([class*="border"]):not([class*="bg-"]):not([class*="btn"]):not([class*="hover-underline"]):not([class*="skip-link"]):hover {
+  opacity: 0.75;
+}
+
+a:not([class*="border"]):not([class*="bg-"]):not([class*="btn"]):not([class*="hover-underline"]):not([class*="skip-link"]):active {
+  opacity: 0.60;
+}
+
+/* ─── Form Field Focus Enhancement ─────────────────────────────────── */
+
+/* Inputs and textareas: slightly stronger bottom-border on focus */
+.form-input:focus {
+  border-bottom-color: var(--sapphire);
+  border-bottom-width: 1.5px;
+}
+
+/* Tailwind-class-based inputs used in ContactForm and PortalClient */
+input.w-full:focus,
+textarea.w-full:focus {
+  border-bottom-color: rgba(10, 22, 40, 0.55);
+  border-bottom-width: 1.5px;
+}
+
+select.w-full:focus {
+  border-bottom-color: rgba(10, 22, 40, 0.55);
+  border-bottom-width: 1.5px;
+}
+
+/* ─── Skip Navigation Link ──────────────────────────────────────────── */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: #0A1628;
+  color: #F8F7F4;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ─── Focus Rings — Accessible & Subtle ────────────────────────────── */
+
+/* Remove default outline, apply custom ring */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #C8A96E;
+  outline-offset: 2px;
+}
+
+/* Buttons and links on dark backgrounds */
+.bg-sapphire *:focus-visible,
+nav *:focus-visible {
+  outline: 2px solid #C8A96E;
+  outline-offset: 2px;
+}
+
+/* ─── Contrast Fixes for Small Text on Dark Backgrounds ─────────────── */
+
+/* Footer nav links: text-white/40 (#6c737e) fails — bump to /55 (#7d8795) still fails
+   Use /65 which gives ~5:1 on #0A1628 */
+.footer-nav-link {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Footer section labels: text-white/20 fails — bump to /45 */
+.footer-section-label {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Footer legal/secondary text: text-white/20 and /30 fail — bump to /45 */
+.footer-legal-text {
+  color: rgba(255, 255, 255, 0.45);
+}
